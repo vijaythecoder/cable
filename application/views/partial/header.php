@@ -14,3 +14,4 @@
 
 
 <script src="<?php echo base_url();?>js/jquery-1.3.2.min.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
+<script src="<?php echo base_url();?>js/jquery.validate.min.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
