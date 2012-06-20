@@ -20,6 +20,14 @@ class employee_model extends CI_Model
 		
 		$this->db->insert('cbs_people',$req);
 		$this->db->insert('cbs_employees',$data);
+	} 
+	public function login()
+	{
+		$uname = $this->input->post('username');
+		$psd = $this->input->post('password');
+		
+		$query = $this->db->query("select * from cbs_employees where username = '$uname' and password = '$psd' ");
+		return $query->num_rows();
 	}
 }
 

@@ -2,14 +2,14 @@
 
 class Customer extends CI_Controller {
 	
-	public function addcustomer()
+	public function add_customer()
 	{
-		$this->load->view('addcustomer');
+		$this->load->view('add_customer');
 	}
 	
 	public function create_customer()
 	{
-		$this->form_validation->run('addcustomer');
+		$this->form_validation->run('add_customer');
 		$this->Customer_model->add_customer();		
 			
 	}
