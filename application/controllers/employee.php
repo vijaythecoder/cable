@@ -18,6 +18,10 @@ class Employee extends CI_Controller {
 	}
 	public function login()
 	{
+		if($this->is_logged())
+		{
+		redirect('employee/homepage');
+		}
 		$this->load->view('login');
 	}
 	public function user_login()
