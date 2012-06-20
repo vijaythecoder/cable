@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Add Customer</title>
+<title>Add Employee</title>
 </head>
 
 <body>
-<?php echo form_open('customer/create_customer')?>
+<?php echo form_open('employee/create_employee')?>
 
-<center><h3>Add Customer</h3>
-<table><tr><td> Customer ID: </td>
+<center><h3>Add Employee</h3>
+<table><tr><td> Employee ID: </td>
 <td> <?php echo form_input('pid','')?> </td></tr>
 <tr><td> First Name </td>
 <td> <?php echo form_input('first_name','')?> </td></tr>
@@ -23,19 +23,13 @@
 <td> <?php echo form_input('address','')?> </td></tr>
 <tr><td> City </td>
 <td> <?php echo form_input('city','')?> </td></tr>
-<tr><td> Installation Date </td>
-<td> <?php echo form_input('installation_date','')?> </td></tr>
-</body><tr><td> Advance amount </td>
-<td> <?php echo form_input('advance_amount','')?> </td></tr>
-<tr><td> Payment type </td>
-<td> <?php echo form_input('payment_type','')?> </td></tr>
-<tr><td> Next pay </td>
-<td> <?php echo form_input('next_pay','')?> </td></tr>
-<tr><td> Amount </td>
-<td> <?php echo form_input('amount','')?> </td></tr>
-<tr><td> Due amount </td>
-<td> <?php echo form_input('due_amount','')?> </td></tr>
-<tr><td> <?php echo form_submit('submit','Add Customer')?></td>
+<tr><td> Username </td>
+<td> <?php echo form_input('username','')?> </td></tr>
+<tr><td> Password </td>
+<td> <?php echo form_password('password','')?> </td></tr>
+
+<tr><td> <?php echo form_submit('submit','Add employee')?></td>
 <td><?php echo form_reset('reset','Reset')?></td></tr>
 </table></center>
+</body>
 </html>

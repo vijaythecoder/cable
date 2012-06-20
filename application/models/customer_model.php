@@ -18,13 +18,12 @@ class Customer_model extends CI_Model
 		$amount = $this->input->post('amount');
 		$due_amount = $this->input->post('due_amount');
 		
-		$data = array('installation_date'=>$installation_date,'advance_amount'=>$advance_amount,'payment_type'=>			$payment_type,'next_pay'=>$next_pay,'amount'=>$amount,'due_amount'=>$due_amount,'pid'=>$pid,'deleted'=>0);
+		$data = array('installation_date'=>$installation_date,'advance_amount'=>$advance_amount,'payment_type'=>$payment_type,'next_pay'=>$next_pay,'amount'=>$amount,'due_amount'=>$due_amount,'pid'=>$pid,'deleted'=>0);
 		
 		$req = array('pid'=>$pid,'first_name'=>$first_name,'last_name'=>$last_name,'phone_number'=>$phone_number,'email'=>$email,'address'=>$address,'city'=>$city,'deleted'=>0);
 		
 		$this->db->insert('cbs_customers',$data);
 		$this->db->insert('cbs_people',$req);
-		
 		
 		
 	}

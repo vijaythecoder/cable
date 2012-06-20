@@ -9,10 +9,9 @@ class Customer extends CI_Controller {
 	
 	public function create_customer()
 	{
-		if($this->form_validation->run('addcustomer') == true)
-			{
-			$this->Customer_model->add_customer();
-			}
+		$this->form_validation->run('addcustomer');
+		$this->Customer_model->add_customer();		
+			
 	}
 }
 	
