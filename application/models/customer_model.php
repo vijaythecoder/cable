@@ -27,6 +27,13 @@ class Customer_model extends CI_Model
 		
 		
 	}
+	public function get_person_id()
+	{
+
+	    $query = $this->db->query("select max(pid) from  cbs_people");
+       	return $result=$query->result();
+		
+		}
 }
 
 ?>

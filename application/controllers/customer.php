@@ -13,5 +13,10 @@ class Customer extends CI_Controller {
 		$this->Customer_model->add_customer();		
 			
 	}
+	public function vijay()
+	{
+		$vj=$this->Customer_model->get_person_id();
+		echo $vj->pid;
+		}
 }
 	
