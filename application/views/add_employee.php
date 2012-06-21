@@ -1,7 +1,8 @@
-<?php
-$this->load->view('partail/header');
- echo form_open('employee/create_employee')?>
-<center><h3>Add Employee</h3>
+<?php $this->load->view('partial/header');
+ echo form_open('employee/create_employee',array('id'=>'add_employee'))?>
+<center><ul type='none' id="error_message_box"></ul>
+<h3>Add Employee</h3>
+<ul id="error_message_box"></ul>
 <table><tr><td> Employee ID: </td>
 <td> <?php echo form_input('pid','')?> </td></tr>
 <tr><td> First Name </td>
@@ -21,8 +22,66 @@ $this->load->view('partail/header');
 <tr><td> Password </td>
 <td> <?php echo form_password('password','')?> </td></tr>
 
+<tr><td>Conform Password </td>
+<td> <?php echo form_password('cpassword','')?> </td></tr>
+
 <tr><td> <?php echo form_submit('submit','Add employee')?></td>
 <td><?php echo form_reset('reset','Reset')?></td></tr>
-</table></center>
-</body>
-</html>
+</table></center><script type='text/javascript'>
+
+//validation and submit handling
+$(document).ready(function()
+{	
+	var submitting = false;
+	
+	$('#add_employee').validate({
+		submitHandler:function(form)
+		{
+			if (submitting) return;
+			submitting = true;
+			$(form).mask("Loading Please wait");
+			$(form).ajaxSubmit({
+			success:function(response)
+			{
+				alert('success');
+				//window.location.href='<?php anchor('login'); ?>';
+			},
+			dataType:'json'
+		});
+
+		},
+		errorLabelContainer: "#error_message_box",
+ 		wrapper: "li",
+		rules: 
+		{
+			first_name:"required",
+			last_name:"required",
+				password:{
+				required:true,
+				minlength:6
+			},
+			cpassword:
+			{
+				equalTo:"#password"
+				},
+		
+			email:"email"
+   		},
+		messages: 
+		{   
+			first_name:"First Name is required",
+			last_name:"Last Name is required",
+			password:{
+				required:"password is required",
+				minlength:"password should be min 6"
+			},
+			cpassword:
+			{
+				equalTo:"password not match"
+				},
+			email:"valid email"
+		
+		}
+	});
+});
+</script>
