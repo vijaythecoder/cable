@@ -10,7 +10,8 @@ class Customer extends CI_Controller {
 	public function create_customer()
 	{
 		$this->form_validation->run('add_customer');
-		$this->Customer_model->add_customer();		
+		if($this->Customer_model->add_customer())
+         echo "success";		
 			
 	}
 	public function vijay()
