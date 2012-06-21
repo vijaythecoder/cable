@@ -2,31 +2,33 @@
 class employee_model extends CI_Model
 {
 	public function add_employee()
-	{
-		$pid = $this->input->post('pid');
-		$first_name = $this->input->post('first_name');
-		$last_name = $this->input->post('last_name');
-		$phone_number = $this->input->post('phone_number');
-		$email = $this->input->post('email');
-		$address = $this->input->post('address');
-		$city = $this->input->post('city');
-		$deleted = 0;
-		$username = $this->input->post('username');
-		$password = $this->input->post('password');
+	{		
+		$person_data = array('first_name'=>$this->input->post('first_name'),
+					'last_name'=>$this->input->post('last_name'),
+					'phone_number'=>$this->input->post('phone_number'),
+					'email'=>$this->input->post('email'),
+					'address'=>$this->input->post('address'),
+					'city'=>$this->input->post('city'));
+			if($this->Person_model->add_person($person_data))
+				{
+					
+		$person_data['pid']=$this->add_person($person_data);
+		$pid=$person_data['pid'];
 		
-		$req = array('pid'=>$pid,'first_name'=>$first_name,'last_name'=>$last_name,'phone_number'=>$phone_number,'email'=>$email,'address'=>$address,'city'=>$city,'deleted'=>0);
+		$employee_data = array('username'=>$this->input->post('username'),
+					  'password'=>$this->input->post('password'),
+					  'deleted'=>0,'pid'=>$pid);
 		
-		$data = array('username'=>$username,'password'=>$password,'pid'=>$pid,'deleted'=>0);
-		
-		$this->db->insert('cbs_people',$req);
-		$this->db->insert('cbs_employees',$data);
+		$this->db->insert('cbs_people',$person_data);
+		if($this->db->insert('cbs_employees',$employee_data))
+			{
+				echo "Success";
+			}
+				}
 	} 
 	public function login()
 	{
-		$uname = $this->input->post('username');
-		$psd = $this->input->post('password');
-		
-		$query = $this->db->query("select * from cbs_employees where username = '$uname' and password = '$psd' ");
+		$query = $this->db->query("select * from cbs_employees where username = '$this->input->post('username')' and password = '$this->input->post('password')' ");
 		return $query->num_rows();
 	}
 }
