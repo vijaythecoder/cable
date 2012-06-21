@@ -17,7 +17,13 @@
 <tr><td> City </td>
 <td> <?php echo form_input('city','')?> </td></tr>
 <tr><td> Installation Date </td>
-<td> <?php echo form_input('installation_date','')?> </td></tr>
+<td> <?php
+$data = array(
+              'name'  => 'installation_date',
+              'id'   => 'datepicker'
+            );
+
+ echo form_input($data)?> </td></tr>
 </body><tr><td> Advance amount </td>
 <td> <?php echo form_input('advance_amount','')?> </td></tr>
 <tr><td> Payment type </td>
@@ -38,6 +44,10 @@
 $(document).ready(function()
 {	
 	var submitting = false;
+	
+	
+		$( "#datepicker" ).datepicker();
+	
 	
 	$('#add_customer').validate({
 		submitHandler:function(form)
